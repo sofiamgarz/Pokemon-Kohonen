@@ -1,0 +1,55 @@
+PROYECTO POKÉMON — MAPAS DE KOHONEN
+Sofía Muñiz Garzón (9400632)
+Alberto Caballero Lorente (9003606)
+
+ENTORNO
+Python 3.12. Las versiones utilizadas están en requirements.txt.
+Los CSV se incluyen en data/raw; el análisis no necesita conexión después
+de instalar las dependencias.
+
+EJECUCIÓN DESDE LA CARPETA DEL PROYECTO
+
+1. Crear el entorno:
+   python -m venv .venv
+
+2. Activarlo:
+   macOS o Linux: source .venv/bin/activate
+   Windows PowerShell: .venv\Scripts\Activate.ps1
+
+3. Instalar las dependencias:
+   python -m pip install -r requirements.txt
+
+4. Ejecutar las comprobaciones:
+   python -m unittest discover -s tests -v
+
+5. Ejecutar el análisis:
+   python src/run.py
+
+6. Generar las tablas de resultados:
+   python src/build_report.py
+
+RESULTADOS
+run.py prepara los datos, entrena los nueve SOM numéricos y el SOM con tipos,
+calcula las métricas y guarda las figuras, los CSV y los modelos en resultados/.
+El modelo principal utiliza una rejilla 12 x 12 y semilla 42. La ejecución
+completa puede tardar varios minutos según el equipo.
+build_report.py genera las imágenes de las tablas en resultados/tablas/.
+
+ARCHIVOS DE CÓDIGO
+src/data.py: lectura, comprobación, limpieza y transformación de los datos.
+src/som.py: algoritmo de Kohonen, errores y U-matrix.
+src/run.py: ejecución de los experimentos y exportación de resultados.
+src/plots.py: figuras de los mapas y de las comparaciones.
+src/build_report.py: imágenes de las tablas de resultados.
+src/download_data.py: recuperación opcional de los mismos CSV del manifiesto.
+tests/test_som.py: seis comprobaciones del algoritmo y del preprocesamiento.
+
+REPOSITORIO DE GITHUB
+https://github.com/sofiamgarz/Pokemon-Kohonen
+
+Se incluyen el código, los datos de entrada con su procedencia, README.md,
+requirements.txt y .gitignore. Los resultados se generan al ejecutar el código.
+El archivo .gitignore excluye entornos locales, cachés y auxiliares de LaTeX.
+La subida se puede realizar desde GitHub o Git, conservando las carpetas.
+Para ejecutar el análisis, data/procedencia.json y data/raw deben acompañar
+a los archivos Python; están incluidos en el paquete de código.
